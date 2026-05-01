@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="lab-header"><a href="/" class="back-link">← Back</a><h1>🔄 CSRF — Cross-Site Request Forgery</h1>
+<p class="muted">Craft malicious pages that trick the victim's browser into making requests. Use the Attacker Site (port 5001) to host your exploits.</p></div>
+<div class="card-grid">
+  <div class="card"><a href="/csrf/bank"><div class="level-num">Level 1</div><h3>No CSRF Protection</h3><p>Bank transfer form with zero CSRF protection. Make a page that auto-transfers $500 to "attacker".</p><span class="difficulty diff-medium">Medium</span></a></div>
+  <div class="card"><a href="/csrf/bank2"><div class="level-num">Level 2</div><h3>Weak CSRF Token</h3><p>Bank added a CSRF token... but is it actually validated?</p><span class="difficulty diff-medium">Medium</span></a></div>
+</div>
+{% endblock %}

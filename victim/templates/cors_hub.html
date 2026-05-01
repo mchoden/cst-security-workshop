@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="lab-header"><a href="/" class="back-link">← Back</a><h1>🌐 CORS Misconfigurations</h1>
+<p class="muted">Use the Attacker Site (port 5001) or curl to steal data from these misconfigured APIs.</p></div>
+<div class="card-grid">
+  <div class="card"><div class="level-num">Level 1</div><h3>Wildcard Origin</h3><p>API: <code>/cors/api/public-profile</code></p><span class="difficulty diff-easy">Easy</span>
+    <details class="hint-box"><summary>Hint</summary><p>Just fetch() it from any origin. Access-Control-Allow-Origin: * means everyone.</p></details></div>
+  <div class="card"><div class="level-num">Level 2</div><h3>Regex Bypass</h3><p>API: <code>/cors/api/trusted-profile</code> — trusts origins ending in <code>trusted-app.com</code></p><span class="difficulty diff-medium">Medium</span>
+    <details class="hint-box"><summary>Hint</summary><p>curl -H "Origin: https://evil-trusted-app.com" to bypass the endswith() check.</p></details></div>
+  <div class="card"><div class="level-num">Level 3</div><h3>Reflected Origin + Creds</h3><p>API: <code>/cors/api/secret-profile</code> — needs cookie <code>session_id=valid-session-token</code></p><span class="difficulty diff-medium">Medium</span>
+    <details class="hint-box"><summary>Hint</summary><p>Set the cookie on the victim domain, then fetch with credentials:'include' from attacker site.</p></details></div>
+</div>
+{% endblock %}

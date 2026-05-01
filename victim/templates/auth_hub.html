@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="lab-header"><a href="/" class="back-link">← Back</a><h1>🔑 Authentication Bypass</h1><p class="muted">Break authentication: default passwords, JWT forgery, IDOR, session hijacking, role escalation.</p></div>
+<div class="card-grid">
+  <div class="card"><a href="/auth/1"><div class="level-num">Level 1</div><h3>Default Credentials</h3><p>Admin never changed the default password.</p><span class="difficulty diff-easy">Easy</span></a></div>
+  <div class="card"><a href="/auth/2"><div class="level-num">Level 2</div><h3>JWT "none" Algorithm</h3><p>Forge a token with no signature.</p><span class="difficulty diff-medium">Medium</span></a></div>
+  <div class="card"><a href="/auth/3"><div class="level-num">Level 3</div><h3>IDOR</h3><p>API returns user profiles by ID. No authorization check.</p><span class="difficulty diff-easy">Easy</span></a></div>
+  <div class="card"><a href="/auth/4"><div class="level-num">Level 4</div><h3>Predictable Sessions</h3><p>Session tokens are MD5(username). Predictable = stealable.</p><span class="difficulty diff-medium">Medium</span></a></div>
+  <div class="card"><a href="/auth/5"><div class="level-num">Level 5</div><h3>JWT Role Escalation</h3><p>Weak secret. Crack it. Forge admin token.</p><span class="difficulty diff-hard">Hard</span></a></div>
+</div>
+{% endblock %}

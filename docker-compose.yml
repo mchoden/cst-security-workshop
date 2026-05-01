@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  victim:
+    build:
+      context: .
+      dockerfile: Dockerfile.victim
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_DEBUG=1
+
+  attacker:
+    build:
+      context: .
+      dockerfile: Dockerfile.attacker
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_DEBUG=1

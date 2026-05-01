@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.db
+.env
+*.egg-info/
+dist/
+build/
+.vscode/
+!.devcontainer/
+INSTRUCTOR_ANSWERS.md
+PRESENTER_SCRIPT.docx
+DEMO_SCRIPT.md

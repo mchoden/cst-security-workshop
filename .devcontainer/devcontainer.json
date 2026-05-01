@@ -1,0 +1,12 @@
+{
+  "name": "Security Workshop",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install flask PyJWT",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [5000, 5001, 5002],
+  "portsAttributes": {
+    "5000": {"label": "Victim App", "visibility": "public", "onAutoForward": "notify"},
+    "5001": {"label": "Attacker App", "visibility": "public", "onAutoForward": "notify"},
+    "5002": {"label": "Internal Service", "visibility": "private", "onAutoForward": "silent"}
+  }
+}

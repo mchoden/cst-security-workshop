@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Security Workshop{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="topnav">
+        <a href="/" class="nav-brand">🔓 Security Workshop</a>
+        <div class="nav-links">
+            <a href="/cors">CORS</a><a href="/csrf">CSRF</a><a href="/auth">Auth</a>
+            <a href="/api-lab">API</a><a href="/ssrf">SSRF</a><a href="/microservices">Micro</a>
+            <a href="/flags" class="nav-flag">🚩 Flags</a>
+        </div>
+    </nav>
+    <main class="container">{% block content %}{% endblock %}</main>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

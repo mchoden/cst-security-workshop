@@ -1,0 +1,29 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0f1117;--surface:#1a1d27;--surface2:#242736;--border:#2e3146;--text:#e1e4ed;--muted:#8b8fa3;--accent:#6c5ce7;--green:#00b894;--red:#e74c3c;--amber:#f39c12;--blue:#0984e3}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-brand{font-size:18px;font-weight:700;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:4px 8px;border-radius:6px;transition:all .15s}
+.nav-links a:hover{color:var(--text);background:var(--surface2)}.nav-flag{color:var(--green)!important}
+.container{max-width:900px;margin:0 auto;padding:32px 24px}
+h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin-bottom:12px}h3{font-size:16px;font-weight:600;margin-bottom:8px}
+p{margin-bottom:12px}.muted{color:var(--muted)}.small{font-size:13px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:24px 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}.card a{text-decoration:none;color:inherit;display:block}
+.card .level-num{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}.card p{color:var(--muted);font-size:14px;margin:0}
+.difficulty{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin-top:12px}
+.diff-easy{background:rgba(0,184,148,.15);color:var(--green)}.diff-medium{background:rgba(243,156,18,.15);color:var(--amber)}.diff-hard{background:rgba(231,76,60,.15);color:var(--red)}
+.form-group{margin-bottom:16px}.form-group label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
+input[type="text"],input[type="password"],input[type="number"],textarea{width:100%;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:inherit}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}textarea{resize:vertical;min-height:80px}
+.btn{display:inline-block;padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.btn:hover{opacity:.85}.btn-sm{padding:6px 14px;font-size:13px}.btn-green{background:var(--green)}.btn-red{background:var(--red)}
+code,.code-block{font-family:'Fira Code','Consolas',monospace;font-size:13px}code{background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--green)}
+.code-block{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;margin:12px 0;white-space:pre-wrap;word-break:break-all}
+.lab-header{margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}.lab-header .back-link{color:var(--muted);text-decoration:none;font-size:13px;display:inline-block;margin-bottom:12px}.lab-header .back-link:hover{color:var(--text)}
+.hint-box{background:rgba(108,92,231,.1);border:1px solid rgba(108,92,231,.3);border-radius:8px;padding:14px 18px;margin:16px 0;font-size:14px}.hint-box summary{cursor:pointer;font-weight:600;color:var(--accent)}
+.success-box{background:rgba(0,184,148,.1);border:1px solid rgba(0,184,148,.3);border-radius:8px;padding:16px 20px;margin:16px 0}
+.error-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);border-radius:8px;padding:12px 18px;margin:12px 0;font-size:14px;color:var(--red)}
+.flag-input-wrap{display:flex;gap:12px;margin:24px 0}.flag-input-wrap input{flex:1}
+.hero{text-align:center;padding:48px 0 40px}.hero h1{font-size:36px;margin-bottom:12px}.hero p{font-size:16px;color:var(--muted);max-width:600px;margin:0 auto 32px}

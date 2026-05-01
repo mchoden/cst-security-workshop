@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero"><h1>🔓 Security Workshop</h1>
+<p class="muted">19 flags across 6 labs. Find the vulnerabilities, capture the flags.</p></div>
+<div class="card-grid">
+  <div class="card"><a href="/cors"><div class="level-num">5.1a • 3 flags</div><h3>CORS</h3><p>Cross-origin misconfigurations</p><span class="difficulty diff-easy">Easy → Medium</span></a></div>
+  <div class="card"><a href="/csrf"><div class="level-num">5.1b • 2 flags</div><h3>CSRF</h3><p>Cross-site request forgery</p><span class="difficulty diff-medium">Medium</span></a></div>
+  <div class="card"><a href="/auth"><div class="level-num">5.5 • 5 flags</div><h3>Auth Bypass</h3><p>JWT, sessions, MFA, escalation</p><span class="difficulty diff-hard">Medium → Hard</span></a></div>
+  <div class="card"><a href="/api-lab"><div class="level-num">5.3 • 3 flags</div><h3>API Security</h3><p>Discovery, verbs, IDOR</p><span class="difficulty diff-medium">Medium</span></a></div>
+  <div class="card"><a href="/ssrf"><div class="level-num">5.4 • 3 flags</div><h3>SSRF</h3><p>Server-side request forgery</p><span class="difficulty diff-hard">Medium → Hard</span></a></div>
+  <div class="card"><a href="/microservices"><div class="level-num">5.2 • 3 flags</div><h3>Microservices</h3><p>Service trust, debug endpoints, lateral movement</p><span class="difficulty diff-hard">Hard</span></a></div>
+</div>
+<div style="text-align:center;margin-top:40px;border-top:1px solid var(--border);padding-top:20px">
+<a href="/flags" class="btn btn-green">🚩 Submit a Flag ({{ 19 }} total)</a></div>
+{% endblock %}

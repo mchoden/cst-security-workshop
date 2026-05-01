@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="lab-header"><a href="/csrf" class="back-link">← Back to CSRF Lab</a><h1>Level 2: Bank Transfer (Weak CSRF Token)</h1>
+<p class="muted">The bank added CSRF tokens! But look carefully at the implementation...</p></div>
+<div class="card" style="max-width:400px">
+  <h3>Secure Transfer</h3>
+  {% if error %}<div class="error-box">{{ error }}</div>{% endif %}
+  {% if msg %}<div class="success-box">{{ msg }}</div>{% endif %}
+  <form method="POST" action="/csrf/bank2" style="margin-top:12px">
+    <input type="hidden" name="csrf_token" value="{{ token }}">
+    <div class="form-group"><label>To</label><input type="text" name="to" placeholder="Recipient"></div>
+    <div class="form-group"><label>Amount ($)</label><input type="text" name="amount" placeholder="Amount"></div>
+    <button type="submit" class="btn" style="width:100%">Secure Transfer</button>
+  </form>
+  <p class="muted small" style="margin-top:8px">CSRF Token: <code>{{ token }}</code></p>
+</div>
+<details class="hint-box"><summary>Hint 1</summary><p>The server checks that a csrf_token field EXISTS in the form. But does it check the VALUE?</p></details>
+<details class="hint-box"><summary>Hint 2</summary><p>Try sending any non-empty value: <code>&lt;input type="hidden" name="csrf_token" value="anything"&gt;</code></p></details>
+{% endblock %}
