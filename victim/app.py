@@ -141,12 +141,17 @@ def csrf_hub():
 # Level 1: No CSRF protection at all
 @app.route("/csrf/bank", methods=["GET","POST"])
 def csrf_bank():
-    # Auto-login as alice for simplicity
     session["csrf_user"] = "alice"
     if request.method == "POST":
         to_user = request.form.get("to","")
         amount = int(request.form.get("amount", 0))
+        referer = request.headers.get("Referer", "")
         if to_user == "attacker" and amount >= 500:
+            if "csrf/bank" in referer:
+                return render_template("csrf_bank.html", 
+                    msg=f"Transferred ${amount} to {to_user} — but that's just normal usage. "
+                        f"The flag requires the request to come from OUTSIDE this page. "
+                        f"Try: curl -X POST http://localhost:5000/csrf/bank -d \"to=attacker&amount=500\"")
             return render_template("csrf_success.html", flag=FLAGS["csrf_1"], amount=amount)
         return render_template("csrf_bank.html", msg=f"Transferred ${amount} to {to_user}")
     return render_template("csrf_bank.html", msg=None)
@@ -159,16 +164,22 @@ def csrf_bank2():
         session["csrf_token"] = secrets.token_hex(16)
 
     if request.method == "POST":
-        # BUG: checks token EXISTS in form but doesn't validate it matches session!
         token = request.form.get("csrf_token", "")
         if not token:
             return render_template("csrf_bank2.html", error="CSRF token missing!", token=session["csrf_token"])
-        # BUG: any non-empty token passes!
         to_user = request.form.get("to","")
         amount = int(request.form.get("amount", 0))
+        referer = request.headers.get("Referer", "")
         if to_user == "attacker" and amount >= 500:
+            if "csrf/bank2" in referer:
+                return render_template("csrf_bank2.html",
+                    msg=f"Transferred ${amount} to {to_user} — but that's normal usage. "
+                        f"The flag requires the request from OUTSIDE. "
+                        f"Hint: the server checks if csrf_token EXISTS but not if it's CORRECT. "
+                        f"Try: curl -X POST http://localhost:5000/csrf/bank2 -d \"csrf_token=fake&to=attacker&amount=500\"",
+                    token=session["csrf_token"], error=None)
             return render_template("csrf_success.html", flag=FLAGS["csrf_2"], amount=amount)
-        return render_template("csrf_bank2.html", msg=f"Transferred ${amount} to {to_user}", token=session["csrf_token"])
+        return render_template("csrf_bank2.html", msg=f"Transferred ${amount} to {to_user}", token=session["csrf_token"], error=None)
     return render_template("csrf_bank2.html", msg=None, token=session["csrf_token"], error=None)
 
 # ═══════════════════════════════════════════════════════════════════
